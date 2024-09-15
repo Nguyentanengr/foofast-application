@@ -41,7 +41,7 @@ public class UserDAO implements IUserDAO{
 
     @Override
     public List<User> findAllByKey(String key, int pageSize, int pageNumber, String fieldSort, String sorter) {
-        int offset = (pageNumber) * pageSize;
+        int offset = (pageNumber) * (pageSize == 0 ? 10 : pageSize);
         List<User> users = new ArrayList<>();
 
         String sql = "SELECT * FROM users";
@@ -54,15 +54,11 @@ public class UserDAO implements IUserDAO{
         }
         sql += " LIMIT " + (pageSize == 0 ? 10 : pageSize) + " OFFSET " + (offset) + ";";
 
-        log.info(sql);
-
 
         try (Connection connection = DatabaseUtil.getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(sql))
         {
-
             log.info(preparedStatement);
-
             ResultSet resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
                 users.add(buildUserFromResultSet(resultSet));
@@ -181,9 +177,6 @@ public class UserDAO implements IUserDAO{
         if (!key.isEmpty()) {
             sql += " WHERE (`first_name` LIKE ? OR `last_name` LIKE ?)";
         }
-
-        log.info(sql);
-
         try (Connection connection = DatabaseUtil.getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
 
@@ -191,8 +184,6 @@ public class UserDAO implements IUserDAO{
                 preparedStatement.setString(1, "%" + key + "%");
                 preparedStatement.setString(2, "%" + key + "%");
             }
-
-            log.info(preparedStatement);
 
             ResultSet resultSet = preparedStatement.executeQuery();
             if (resultSet.next()) {

@@ -5,12 +5,13 @@ import com.swingapplication.foofast.daos.userDAO.UserDAO;
 import com.swingapplication.foofast.dtos.responses.ListUserResponse;
 import com.swingapplication.foofast.dtos.responses.UserResponse;
 import com.swingapplication.foofast.mappers.UserMapper;
+import lombok.extern.log4j.Log4j2;
 
 import java.awt.print.Pageable;
 import java.util.List;
 import java.util.stream.Collectors;
 
-
+@Log4j2
 public class UserController {
 
     private final IUserDAO userDAO;
@@ -23,7 +24,8 @@ public class UserController {
 
     public ListUserResponse getAllUsers(String key, int pageSize, int pageNumber, String fieldSort, String sorter) {
         int totalUsers = userDAO.countUsersByKey(key);
-        int totalPages = (int) Math.ceil((double) totalUsers / pageSize);
+        log.info(totalUsers);
+        int totalPages = (int) Math.ceil((double) totalUsers / (pageSize == 0 ? 10 : pageSize));
 
         return ListUserResponse.builder()
                 .totalPages(totalPages)
