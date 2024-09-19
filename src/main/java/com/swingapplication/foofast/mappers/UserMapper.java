@@ -15,6 +15,7 @@ public interface UserMapper {
         return Mappers.getMapper(UserMapper.class);
     }
 
+    @Mapping(target = "username", ignore = true)
     User mapToUser(UserRequest request);
 
     User updateToUser(UserRequest request, @MappingTarget User user);
