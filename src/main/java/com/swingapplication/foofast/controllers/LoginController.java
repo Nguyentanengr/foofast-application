@@ -2,9 +2,13 @@ package com.swingapplication.foofast.controllers;
 
 import com.swingapplication.foofast.daos.userDAO.IUserDAO;
 import com.swingapplication.foofast.daos.userDAO.UserDAO;
+import com.swingapplication.foofast.dtos.requests.LoginRequest;
+import com.swingapplication.foofast.dtos.responses.LoginResponse;
 import com.swingapplication.foofast.dtos.responses.UserResponse;
 import com.swingapplication.foofast.models.User;
 
+import javax.swing.text.html.Option;
+import javax.validation.Valid;
 import java.util.Optional;
 
 public class LoginController {
@@ -15,21 +19,20 @@ public class LoginController {
         userDAO = new UserDAO();
     }
 
-    public Boolean login(String username, String password) {
+    public LoginResponse login(@Valid LoginRequest loginRequest) { // bat validation
 
-//        Optional<User> userFound = userDAO.findByUsername(username);
-//
-//        userFound.ifPresent(user -> {throw new RuntimeException("Username da ton tai");});
+        // kiem tra username co ton tai trong database khong
+        Optional<User> user = userDAO.findByUsername(loginRequest.getUsername());
 
-        // logic kiem tra password
+       // logic kiem tra
 
-        // UserDAo -> User : chua noi dung nhay nham
-        // UserController -> UserResponse : khong chua noi dung nhay cam
-        // passowrd = userfound.getpassword;
 
-        // thuat toan bcript giai ma mat khaku
+        // neu kiem tra password dung
 
-        return true;
+        return new LoginResponse()
+                .builder()
+                .veryfied(true)
+                .build();
 
     }
 }

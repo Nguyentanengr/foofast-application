@@ -1,4 +1,8 @@
 package com.swingapplication.foofast.daos.productDAO;
 
-public class ProductDAO {
+import java.util.List;
+import java.util.Optional;
+
+public class ProductDAO implements IProductDAO{
+
 }

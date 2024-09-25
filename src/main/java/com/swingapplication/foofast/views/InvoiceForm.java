@@ -5,8 +5,14 @@
 package com.swingapplication.foofast.views;
 
 import com.formdev.flatlaf.ui.FlatLineBorder;
+import com.swingapplication.foofast.controllers.LoginController;
+import com.swingapplication.foofast.dtos.requests.LoginRequest;
+import com.swingapplication.foofast.dtos.responses.LoginResponse;
 
 import java.awt.*;
+import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import javax.swing.*;
 import javax.swing.border.LineBorder;
 import javax.swing.table.JTableHeader;
@@ -20,7 +26,10 @@ public class InvoiceForm extends javax.swing.JFrame {
     /**
      * Creates new form NewJFrame
      */
+    private LoginController loginController;
+
     public InvoiceForm() {
+        loginController = new LoginController();
         initComponents();
     }
 
@@ -534,7 +543,30 @@ public class InvoiceForm extends javax.swing.JFrame {
         jLabel20.setText("Chi tiết");
         jLabel20.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jLabel20.setOpaque(true);
+        jLabel20.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                String username = jTextField2.getText();
+                String password = jTextField2.getText();
 
+                LoginRequest loginRequest = LoginRequest.builder()
+                        .username(username)
+                        .password(password)
+                        .build();
+
+                LoginResponse login = loginController.login(loginRequest);
+                if (login.isVeryfied()) {
+                    UserPage userPage = new UserPage();
+                    userPage.setVisible(true);
+                }
+
+                // Dua tren doi tuong dto de bo du lieu vao
+                // Xay dung logic : logic login :
+                // nhan vao dto request login -> controller xu ly logic -> dao thao tac voi database
+//                                                                                                |
+//                 giao dien nhan doi tuong response <-controller xy ly logic tra ve (convert tu doi tuong thuc su sang doi tuong dto response)  <-  doi tuong thuc su
+            }
+        });
         jComboBox1.setBackground(new java.awt.Color(254, 255, 255));
         jComboBox1.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         jComboBox1.setForeground(new java.awt.Color(102, 102, 102));
@@ -775,6 +807,8 @@ public class InvoiceForm extends javax.swing.JFrame {
                 JFrame frame = new InvoiceForm();
                 frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
                 frame.setVisible(true);
+
+
             }
         });
     }
@@ -835,4 +869,6 @@ public class InvoiceForm extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField7;
     private javax.swing.JTextField jTextField8;
     // End of variables declaration//GEN-END:variables
+
+
 }
