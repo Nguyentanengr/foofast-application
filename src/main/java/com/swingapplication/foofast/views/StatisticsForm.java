@@ -4,19 +4,12 @@
  */
 package com.swingapplication.foofast.views;
 
-import com.formdev.flatlaf.ui.FlatLineBorder;
 import com.swingapplication.foofast.controllers.LoginController;
-import com.swingapplication.foofast.dtos.requests.LoginRequest;
-import com.swingapplication.foofast.dtos.responses.LoginResponse;
+import com.swingapplication.foofast.views.Chart.CustomerForm;
+import com.swingapplication.foofast.views.Chart.RevenueForm;
+import com.swingapplication.foofast.views.Chart.TransactionForm;
 
-import java.awt.*;
-import java.awt.event.ActionListener;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
 import javax.swing.*;
-import javax.swing.border.LineBorder;
-import javax.swing.plaf.ColorUIResource;
-import javax.swing.table.JTableHeader;
 
 /**
  *
@@ -42,7 +35,7 @@ public class StatisticsForm extends javax.swing.JFrame {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
-
+        customerForm = new RevenueForm();
         Background = new javax.swing.JPanel();
         LeftPanel = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
@@ -354,15 +347,15 @@ public class StatisticsForm extends javax.swing.JFrame {
         jPanel12.setBackground(new java.awt.Color(252, 252, 252));
 
         jLabel26.setFont(new java.awt.Font("SF Pro Display", 0, 20));
-        jLabel26.setText("Tổng doanh thu");
+        jLabel26.setText("Tổng doanh thu năm");
         jLabel26.setToolTipText("");
 
         jLabel27.setFont(new java.awt.Font("Segoe UI", 1, 35)); // NOI18N
-        jLabel27.setText("132,060,000");
+        jLabel27.setText("82,122,060,000");
 
         jLabel29.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel29.setForeground(new java.awt.Color(153, 153, 153));
-        jLabel29.setText("Kể từ tuần vừa qua");
+        jLabel29.setText("So với tháng trước");
 
         jLabel28.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabel28.setForeground(new java.awt.Color(0, 204, 51));
@@ -372,18 +365,20 @@ public class StatisticsForm extends javax.swing.JFrame {
         jPanel12.setLayout(jPanel12Layout);
         jPanel12Layout.setHorizontalGroup(
             jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-            .addGroup(jPanel12Layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel12Layout.createSequentialGroup()
                 .addGap(16, 16, 16)
                 .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel27, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jPanel12Layout.createSequentialGroup()
-                        .addGap(5, 5, 5)
-                        .addComponent(jLabel28, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jLabel29))
-                    .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(jLabel26, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabel27, javax.swing.GroupLayout.Alignment.LEADING)))
-                .addContainerGap(53, Short.MAX_VALUE))
+                        .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel26, javax.swing.GroupLayout.PREFERRED_SIZE, 247, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel12Layout.createSequentialGroup()
+                                .addGap(5, 5, 5)
+                                .addComponent(jLabel28, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jLabel29)))
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
         );
         jPanel12Layout.setVerticalGroup(
             jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -404,15 +399,15 @@ public class StatisticsForm extends javax.swing.JFrame {
         jPanel13.setBackground(new java.awt.Color(252, 252, 252));
 
         jLabel30.setFont(new java.awt.Font("SF Pro Display", 0, 20));
-        jLabel30.setText("Khách hàng");
+        jLabel30.setText("Khách hàng tích lũy");
         jLabel30.setToolTipText("");
 
         jLabel31.setFont(new java.awt.Font("Segoe UI", 1, 35)); // NOI18N
-        jLabel31.setText("1,600");
+        jLabel31.setText("1,645");
 
         jLabel32.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel32.setForeground(new java.awt.Color(153, 153, 153));
-        jLabel32.setText("Kể từ tuần vừa qua");
+        jLabel32.setText("So với tháng trước");
 
         jLabel33.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabel33.setForeground(new java.awt.Color(0, 204, 51));
@@ -423,19 +418,17 @@ public class StatisticsForm extends javax.swing.JFrame {
         jPanel13Layout.setHorizontalGroup(
             jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel13Layout.createSequentialGroup()
-                .addGap(16, 16, 16)
-                .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel31)
-                    .addGroup(jPanel13Layout.createSequentialGroup()
-                        .addGap(5, 5, 5)
-                        .addComponent(jLabel33, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jLabel32)))
+                .addGap(21, 21, 21)
+                .addComponent(jLabel33, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel32)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel13Layout.createSequentialGroup()
                 .addContainerGap(16, Short.MAX_VALUE)
-                .addComponent(jLabel30, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(79, 79, 79))
+                .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel31, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel30, javax.swing.GroupLayout.PREFERRED_SIZE, 268, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap())
         );
         jPanel13Layout.setVerticalGroup(
             jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -572,15 +565,15 @@ public class StatisticsForm extends javax.swing.JFrame {
         jPanel14.setBackground(new java.awt.Color(252, 252, 252));
 
         jLabel34.setFont(new java.awt.Font("SF Pro Display", 0, 20));
-        jLabel34.setText("Giao dịch");
+        jLabel34.setText("Giao dịch tích lũy");
         jLabel34.setToolTipText("");
 
         jLabel35.setFont(new java.awt.Font("Segoe UI", 1, 35)); // NOI18N
-        jLabel35.setText("128");
+        jLabel35.setText("27,428");
 
         jLabel36.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel36.setForeground(new java.awt.Color(153, 153, 153));
-        jLabel36.setText("Kể từ tuần vừa qua");
+        jLabel36.setText("So với tháng trước");
 
         jLabel37.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabel37.setForeground(new java.awt.Color(255, 102, 51));
@@ -591,19 +584,20 @@ public class StatisticsForm extends javax.swing.JFrame {
         jPanel14Layout.setHorizontalGroup(
             jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel14Layout.createSequentialGroup()
-                .addGap(16, 16, 16)
-                .addGroup(jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel35)
-                    .addGroup(jPanel14Layout.createSequentialGroup()
-                        .addGap(5, 5, 5)
-                        .addComponent(jLabel37, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jLabel36)))
+                .addGap(21, 21, 21)
+                .addComponent(jLabel37, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel36)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel14Layout.createSequentialGroup()
                 .addContainerGap(16, Short.MAX_VALUE)
-                .addComponent(jLabel34, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(94, 94, 94))
+                .addGroup(jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel14Layout.createSequentialGroup()
+                        .addComponent(jLabel35, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addContainerGap())
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel14Layout.createSequentialGroup()
+                        .addComponent(jLabel34, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(94, 94, 94))))
         );
         jPanel14Layout.setVerticalGroup(
             jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -633,19 +627,18 @@ public class StatisticsForm extends javax.swing.JFrame {
         MainPanel.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-30, 0, 1040, 250));
 
         jPanel8.setBackground(new java.awt.Color(250, 250, 250));
-
         javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
         jPanel8.setLayout(jPanel8Layout);
         jPanel8Layout.setHorizontalGroup(
             jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 930, Short.MAX_VALUE)
+                    .addComponent(customerForm, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         jPanel8Layout.setVerticalGroup(
             jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 360, Short.MAX_VALUE)
+                    .addComponent(customerForm, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
-        MainPanel.add(jPanel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 290, 930, 360));
+        MainPanel.add(jPanel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 290, 930, 380));
 
         jLabel18.setBackground(new java.awt.Color(255, 255, 255));
         jLabel18.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
@@ -658,7 +651,7 @@ public class StatisticsForm extends javax.swing.JFrame {
 
         jLabel20.setBackground(new java.awt.Color(255, 255, 255));
         jLabel20.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
-        jLabel20.setForeground(new java.awt.Color(102, 102, 102));
+        jLabel20.setForeground(new java.awt.Color(51, 51, 51));
         jLabel20.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel20.setText("Doanh thu");
         jLabel20.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -689,13 +682,14 @@ public class StatisticsForm extends javax.swing.JFrame {
         MainPanel.add(jSeparator7, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 250, 10, 30));
 
         jLabel10.setBackground(new java.awt.Color(0, 0, 255));
-        jLabel10.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabel10.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         jLabel10.setForeground(new java.awt.Color(255, 255, 255));
         jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel10.setText("Xuất báo cáo");
         jLabel10.setToolTipText("");
+        jLabel10.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jLabel10.setOpaque(true);
-        MainPanel.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 670, 120, 40));
+        MainPanel.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 680, 110, 40));
 
         Background.add(MainPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 0, 1010, 730));
 
@@ -760,6 +754,7 @@ public class StatisticsForm extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private JPanel customerForm;
     private javax.swing.JPanel Background;
     private javax.swing.JPanel LeftPanel;
     private javax.swing.JPanel MainPanel;

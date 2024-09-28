@@ -81,5 +81,13 @@
             <version>2.0.1.Final</version>
         </dependency>
 
+        <!--Timing dependency-->
+        <dependency>
+            <groupId>net.java.dev.timingframework</groupId>
+            <artifactId>timingframework</artifactId>
+            <version>1.0</version>
+        </dependency>
+
+
     </dependencies>
 </project>
